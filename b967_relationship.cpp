@@ -19,20 +19,40 @@ int main() {
     vector<bool> visited(n, false);
     visited[0] = true;
     bfs.push(0);
-    int counter = 0;
+    vector<int> distance(n, 0);
+    int furthest;
     while (!bfs.empty()) {
         int temp = bfs.front();
-//        cout << temp << ' ';
         bfs.pop();
-        counter++;
 
         for(int i : relationTree[temp]) {
             if (!visited[i]) {
                 bfs.push(i);
                 visited[i] = true;
-                counter--;
+                distance[i] = distance[temp]+1;
+                furthest = i;
             }
         }
     }
-    cout << counter;
+
+    fill(visited.begin(), visited.end(), false);
+    fill(distance.begin(), distance.end(), 0);
+    visited[furthest] = true;
+    bfs.push(furthest);
+    int furthestD = -1;
+    while (!bfs.empty()) {
+        int temp = bfs.front();
+        bfs.pop();
+
+        for(int i : relationTree[temp]) {
+            if (!visited[i]) {
+                bfs.push(i);
+                visited[i] = true;
+                distance[i] = distance[temp]+1;
+                if (distance[i] > furthestD) furthestD = distance[i];
+            }
+        }
+    }
+
+    cout << furthestD;
 }
