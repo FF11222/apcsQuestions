@@ -1,6 +1,6 @@
 # 這裡會寫我的解題過程
 
-## 2024/04/22 [血緣關係](https://zerojudge.tw/ShowProblem?problemid=b967)
+## 開始時間: 2024/04/22 [血緣關係](https://zerojudge.tw/ShowProblem?problemid=b967)
 ![img.png](source/img.png)
 
 首先我的想法就是bfs兩次，具體的作法是任意找一點做bfs
