@@ -3,6 +3,7 @@
 ## 2024/04/22 [血緣關係](https://zerojudge.tw/ShowProblem?problemid=b967)
 ![img.png](source/img0.png)
 
+
 首先我的想法就是bfs兩次，具體的作法是任意找一點做bfs，以此找到最深的點，然後再從最深的點做bfs到另一個最深的點， 並計算他們之間的距離。
 
 ### 遇到的問題:
