@@ -86,3 +86,30 @@
    1. 其中有一些細節需要注意:
       1. 由於此題是以1為底的，因此陣列長度要注意，而且for迴圈的次數也要注意。
 #### 完成時間:2024/05/04
+
+## 2024/05/05 [矩陣轉換](https://zerojudge.tw/ShowProblem?problemid=b965)
+![](C:\Users\tingy\Documents\apcsQuestions\source\img2.png)
+這題的題目有兩種對矩陣的操作-翻轉跟旋轉。
+
+我首先的想法就是直接模擬旋轉跟翻轉的操作。
+1. 旋轉:
+![](source/img3.png)
+在看題目的過程中，我發現了一個規律(左邊的矩陣稱為旋轉後的，右邊的稱為旋轉前) 
+
+   `旋轉後的矩陣的第i,j個元素等於旋轉前的矩陣的第j,abs(i-row+1)個元素 `
+2. 翻轉:
+翻轉就恨簡單了，只要前後交換就好。
+
+其中我有遇到一個小問題，就是在旋轉那邊，複製矩陣時，我原本是直接
+```cpp
+vector<vector<int>> temp = martrix;
+martrix.clear();
+```
+然後再直接對原本的矩陣操作，但是這樣會直接炸開，所以我之後改成
+```cpp
+vector<int> a(matrix1.size());
+vector<vector<int>> temp(matrix1[0].size(), a);
+matrix1.swap(temp);
+```
+這樣就沒問題了。
+#### 完成時間2024/05/12
