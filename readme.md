@@ -113,3 +113,31 @@ matrix1.swap(temp);
 ```
 這樣就沒問題了。
 #### 完成時間2024/05/12
+
+## 2024/05/13 [磁軌移動序列](https://zerojudge.tw/ShowProblem?problemid=k733)
+題目中有三種指令:T(後面接著的兩位數為磁軌移動到的位置),L(代表迴圈開始，後面接著的數字為重複次數),E(代表迴圈結束)。
+這題最麻煩的是迴圈中還有迴圈
+我一開始的想法是像處理四則運算的括號一樣用stack去處理，但是這樣會造成外面的迴圈無法記錄到內層迴圈的變更。
+```cpp
+void deloop() {
+    stack<pair<int, int>> loop;
+    string temp = command;
+    command = "";
+
+    for (int i = 0; i < temp.size(); i++) {
+        if (temp[i] == 'L') {
+            loop.push(make_pair(i+2, temp[i+1]-'0'));
+            i++;
+        } else if (temp[i] == 'E') {
+            for (int j = 0; j < loop.top().second; j++) {
+                command += temp.substr(loop.top().first, i-loop.top().first);
+            }
+            loop.pop();
+        } else {
+            command += temp[i];
+        }
+    }
+}
+```
+我之後參考網路上的解法，也就是現在的解法。
+#### 完成時間2024/05/21
